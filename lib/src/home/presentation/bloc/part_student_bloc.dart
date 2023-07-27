@@ -6,5 +6,7 @@ void errorLogin(Emitter<StudentState> emit, value) {
 }
 
 void successLogin(Emitter<StudentState> emit, value) {
-  emit(StudentLoadedState());
+  final response = StudentResponseModel.fromJson(value);
+
+  emit(StudentLoadedState(responseData: response));
 }

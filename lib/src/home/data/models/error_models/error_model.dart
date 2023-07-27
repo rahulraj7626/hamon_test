@@ -4,7 +4,7 @@ part 'error_model.g.dart';
 
 @JsonSerializable()
 class ErrorModel {
-  final int statusCode;
+  final int? statusCode;
 
   final String message;
   ErrorModel(this.statusCode, this.message);

@@ -17,8 +17,6 @@ class HttpServiceRequests implements HttpService {
       responseJson = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return responseJson;
-      } else if (500 <= response.statusCode && response.statusCode <= 599) {
-        return unavailableResponse;
       } else {
         return responseJson;
       }
@@ -39,8 +37,6 @@ class HttpServiceRequests implements HttpService {
       // print(response);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return responseJson;
-      } else if (500 <= response.statusCode && response.statusCode <= 599) {
-        return unavailableResponse;
       } else {
         return responseJson;
       }

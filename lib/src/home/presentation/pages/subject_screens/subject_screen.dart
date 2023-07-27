@@ -1,8 +1,7 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hamon_test/route_manager/route_imports.gr.dart';
+import 'package:hamon_test/src/home/presentation/bloc/subject_bloc.dart';
 
 import '../../../../utils/toast_widget.dart';
 import '../../../data/models/strudents_model/student_model.dart';
@@ -10,10 +9,8 @@ import '../../bloc/student_bloc.dart';
 import '../../widgets/student_widgets.dart';
 
 @RoutePage()
-class StudentScreen extends StatelessWidget {
-  const StudentScreen({
-    super.key,
-  });
+class SubjectScreen extends StatelessWidget {
+  const SubjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class StudentScreen extends StatelessWidget {
           ),
           Expanded(
             child: BlocBuilder(
-                bloc: BlocProvider.of<StudentBloc>(context)
+                bloc: BlocProvider.of<SubjectBloc>(context)
                   ..add(GetStudentEvent()),
                 builder: (BuildContext context, StudentState state) {
                   if (state is ErrorState) {
@@ -65,11 +62,9 @@ class StudentScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: ListTile(
-                  onTap: () => context
-                      .pushRoute(StudentDetailScreenRoute(student: item)),
-                  leading: const CircleAvatar(
+                  leading: CircleAvatar(
                       radius: 30,
-                      child: Icon(
+                      child: const Icon(
                         Icons.person,
                         size: 35,
                       )),
